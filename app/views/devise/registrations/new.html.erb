@@ -1,0 +1,120 @@
+<title>Navbar Template for Bootstrap</title>
+<head>
+  <!-- Bootstrap core CSS -->
+  <%= javascript_include_tag "application" %>
+
+  <link href ="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" rel="javascripts"> 
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="../../../public/stylesheets/sign.up.css">
+
+</head>
+<body>
+  <div class="entireBackground">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">  
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div>
+            <img src="/images/logo.gif" alt="rss feed" style="float:left;"/>
+            <a class="navbar-brand" href="#" ><%= link_to 'freelift', root_url, class: "navbar-brand"%></a>
+            <a class="navbar-brand" href="#" ><%= link_to 'home', root_url, class: "navbar-brand"%></a>
+              <h3 style="float:left; padding-left: 30px; font-size: 18px;"> Team Three of a Kind </h3>
+                <img style="float:left; " src="/images/three2.png" alt="rss feed" height="55" width="55"/>
+          </div>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right" role="form">
+              <button type="submit" class="btn btn-danger"><%= link_to "login", new_user_session_path, :class => 'navbar-link'  %></button>
+              <button type="submit" class="btn btn-success disabled"><%= link_to "sign up", new_user_registration_path, :class => 'navbar-link'  %></button>
+            </form>  
+          </div>  
+        </div><!--/.nav-collapse -->
+      </div>
+
+
+      <div class="jumbotron" style="background-image: url(/images/plainsroad.jpg);">
+        <div class="container">
+        <h2 style="font-weight: bold !important;">Sign up</h2>
+        <p  style="font-weight: bold !important;"> We need the following information from you to setup your carpooling </p>
+      </div>
+    </div>
+    <div id="loginArea" class="row">
+      <div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-4">
+              <h4><%= f.label :name %></h4>
+              <%= f.text_field :name, autofocus: true, :class => "form-control", :placeholder => "Enter your first name" %> 
+            </div>  
+            <div class="col-xs-2">
+              <h4><%= f.label "Last Name" %></h4> 
+              <%= f.text_field :lastname, autofocus: true, :class => "form-control", :placeholder => "Enter your last name" %>
+          </div>   
+
+            <div class="row">            
+              <div class="col-xs-4 col-xs-offset-4">
+                <h4><%= f.label :email %></h4>
+                <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Enter your Freescale Email" %>
+              </div>
+            </div> 
+
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+              <h4><%= f.label :phone %></h4>
+              <%= f.text_field :phone, autofocus: true, :class => "form-control", :placeholder => "Enter your phone number"  %>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+              <h4><%= f.label :password %></h4>
+              <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Enter your password" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+              <h4><%= f.label :password_confirmation %></h4>
+                <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Reenter your password" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+              <h4><%= f.label :address %></h4>
+              <%= f.text_field :address, autofocus: true, :class => "form-control", :placeholder => "Enter your address" %>
+              <P style = "font-size:90%; color: #808080">Ex: 6636, William Cannon Drive, Austin</p>
+            </div>
+          </div>
+
+          <div class="radioBtns">
+            <h3> Can you drive? </h3>
+            <div style="    margin-bottom: 30px;">
+              <div class="YesOrNo">
+                <%= f.label :carbonated, 'Yes' %> <%= f.radio_button :drive, true %>
+                <%= f.label :carbonated, 'No' %> <%= f.radio_button :drive, false %></div>      
+              </div>
+            </div>
+          </div>
+
+          <%= f.submit "Submit", :class =>" btn-success btn-xlarge" %>          
+          <%end%>
+        </div>
+      </div>
+</body>
+
